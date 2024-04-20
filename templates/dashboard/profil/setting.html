@@ -1,0 +1,91 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+
+            <!-- Page Container START -->
+            <div class="page-container">
+                
+
+                <!-- Content Wrapper START -->
+                <div class="main-content">
+                    <div class="container">
+                        <div class="tab-content m-t-15">
+                            <div class="tab-pane fade show active" id="tab-account" >
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">{{user.username}}</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="media align-items-center">
+                                            <div class="avatar avatar-image  m-h-10 m-r-15" style="height: 80px; width: 80px">
+                                                <img src="{% static 'dashboard/images/avatars/thumb.jpg' %}" alt="">
+                                            </div>
+                                            <div class="m-l-20 m-r-20">
+                                                <h5 class="m-b-5 font-size-18">{{user.first_name}}</h5>
+                                                <p class="opacity-07 font-size-13 m-b-0">
+                                                    {{user.last_name}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <hr class="m-v-25">
+                                        <form method="post">
+                                             {% csrf_token %}
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="font-weight-semibold" for="userName">User Name:</label>
+                                                    <input type="text" class="form-control" name="username" placeholder="User Name" value="{{user.username}}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="font-weight-semibold" for="userName">User forst Name:</label>
+                                                    <input type="text" class="form-control" name="first_name" placeholder="User Name" value="{{user.first_name}}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="font-weight-semibold" for="userName">User last Name:</label>
+                                                    <input type="text" class="form-control" name="last_name" placeholder="User Name" value="{{user.last_name}}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="font-weight-semibold" for="email">Email:</label>
+                                                    <input type="email" class="form-control" name="email" placeholder="email" value="{{user.email}}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <button type="submit" class="btn btn-primary m-t-30">Ozgartirish</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Change Password</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="post"  action="{% url 'auth:edit_password' %}">
+                                             {% csrf_token %}
+                                            <div class="form-row">
+                                                <div class="form-group col-md-3">
+                                                    <label class="font-weight-semibold" for="oldPassword">Old Password:</label>
+                                                    <input type="password" class="form-control" name="password" placeholder="Old Password">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="font-weight-semibold" for="newPassword">New Password:</label>
+                                                    <input type="password" class="form-control" name="password_new" placeholder="New Password">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="font-weight-semibold" for="confirmPassword">Confirm Password:</label>
+                                                    <input type="password" class="form-control" name="password_conf" placeholder="Confirm Password">
+                                                </div> <br>
+                                                <div class="form-group col-md-3">
+                                                    <button type="submit" class="btn btn-primary m-t-30">Ozgartirish</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Wrapper END -->
+
+{% endblock %}

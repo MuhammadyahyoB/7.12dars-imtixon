@@ -1,0 +1,87 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+
+            <!-- Page Container START -->
+            <div class="page-container" style="padding-left: 20px; margin-right: 90px;">
+
+                <!-- Content Wrapper START -->
+                <div class="main-content" >
+                    <div class="page-header">
+                        <h2 class="header-title">Orders List</h2>
+                        <div class="header-sub-title">
+                            <nav class="breadcrumb breadcrumb-dash">
+                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                <a class="breadcrumb-item" href="#">Apps</a>
+                                <a class="breadcrumb-item" href="#">E-commerce</a>
+                                <span class="breadcrumb-item active">Attendance</span>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row m-b-30">
+                                <div class="col-lg-8">
+                                    <div class="d-md-flex">
+                                        <div class="m-b-10 m-r-15">
+                                            <select class="custom-select" style="min-width: 180px;">
+                                                <option selected>Barchasi</option>
+                                                {% for option in queryset %}
+                                                 <option value="{{option}}">{{option}}</option>
+                                                 {% endfor %}
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-primary m-r-5">Primary</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-right">
+                                    <button class="btn btn-primary">
+                                        <i class="anticon anticon-plus-circle m-r-5"></i>
+                                        <span>Add Product</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover e-commerce-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="checkbox">
+                                                    <input id="checkAll" type="checkbox">
+                                                    <label for="checkAll" class="m-b-0"></label>
+                                                </div>
+                                            </th>
+                                            <th>Name</th>
+
+                                            <th>Access time</th>
+
+                                            <th> Exit time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for lola in queryset %}
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="check-item-1" type="checkbox">
+                                                    <label for="check-item-1" class="m-b-0"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{lola.staff}}
+                                            </td>
+                                            <td>{{lola.staff_arrive}}</td>
+                                            <td>{{lola.staff_rising}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Wrapper END -->
+            </div>
+
+{% endblock %}                
